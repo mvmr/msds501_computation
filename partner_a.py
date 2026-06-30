@@ -42,3 +42,4 @@ for i, r in enumerate(readings):
 
 average = sum(valid) / len(valid)
 print(f'Average of valid readings: {round(average, 2)}')
+# Error due to trying to convert a non-numeric string to a float.
