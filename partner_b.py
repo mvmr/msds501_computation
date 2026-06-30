@@ -28,14 +28,17 @@
 #   Count of valid scores: 4
 # ============================================================
 
-scores = ['88', '95', 'absent', '72', 'n/a', '84']
+scores = ['88', '95', 'absent', '72', 'n/a', '84'] # scores list contains non numerical strings ("absent" and "n/a")
 
 valid = []
 
 for i, s in enumerate(scores):
-    score = int(s)            # <-- this line crashes on bad strings
-    print(f'Score [{i}]: {score}')
-    valid.append(score)
+    try:
+        score = int(s)            # <-- this line crashes on bad strings see above note
+        print(f'Score [{i}]: {score}')
+        valid.append(score)
+    except ValueError:  # prevent the script from crashing on strings when int is expected
+        print(f'Bad at [{i}]: {s}')
 
 print(f'Total of valid scores: {sum(valid)}')
 print(f'Count of valid scores: {len(valid)}')
